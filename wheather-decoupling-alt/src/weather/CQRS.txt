@@ -1,0 +1,64 @@
+D:.
+│   weather.module.ts
+│
+├───application
+│   ├───controllers
+│   │       weather.controller.ts
+│   │
+│   ├───cqrs
+│   │   ├───commands   # Write operations
+│   │   │       create-weather.command.ts
+│   │   │       update-weather.command.ts
+│   │   ├───queries    # Read operations
+│   │   │       get-weather.query.ts
+│   │   │       get-weather-history.query.ts
+│   │   ├───handlers   # Command and Query handlers
+│   │   │       create-weather.handler.ts
+│   │   │       update-weather.handler.ts
+│   │   │       get-weather.handler.ts
+│   │   │       get-weather-history.handler.ts
+│   │   ├───dtos       # Request and Response DTOs
+│   │   │       weather.request.dto.ts
+│   │   │       weather.response.dto.ts
+│   │   ├───mappers    # Data transformations
+│   │   │       weather.mapper.ts
+│   │   ├───validators # Request validations
+│   │   │       weather.validator.ts
+│   │   ├───events     # Optional - if using event-driven CQRS
+│   │   │       weather-created.event.ts
+│   │   │       weather-updated.event.ts
+│   │   ├───exceptions # Error handling
+│   │   │       weather-not-found.exception.ts
+│   │   └───shared     # Common utilities
+│   │           weather.constants.ts
+│   │
+│   └───usecases  # (Optional) Keep if you still want use cases separate
+│           fetch-and-store-weather.usecase.ts
+│
+├───domain
+│   ├───entities
+│   │       weather.entity.ts
+│   ├───ports
+│   │   ├───in  # Input ports for commands and queries
+│   │   │       weather-command-port.interface.ts
+│   │   │       weather-query-port.interface.ts
+│   │   ├───out # Output ports for repositories & external APIs
+│   │   │       weather-api-port.interface.ts
+│   │   │       weather-repository-port.interface.ts
+│   └───events  # Domain events (if needed)
+│           weather-created.domain-event.ts
+│           weather-updated.domain-event.ts
+│
+└───infrastructure
+    ├───api
+    │       weather-api.adapter.ts
+    │
+    ├───config
+    │       app.config.ts
+    │
+    ├───database
+    │       weather-repository.adapter.ts
+    ├───messaging  # Optional - if using event-driven CQRS
+    │       weather-event.publisher.ts
+    └───repositories
+            weather-repository.adapter.ts
